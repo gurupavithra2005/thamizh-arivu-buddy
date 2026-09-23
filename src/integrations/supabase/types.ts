@@ -593,6 +593,17 @@ export type Database = {
       }
       show_limit: { Args: never; Returns: number }
       show_trgm: { Args: { "": string }; Returns: string[] }
+      source_library_stats: {
+        Args: never
+        Returns: {
+          chunk_count: number
+          document_count: number
+          embedded_count: number
+          page_count: number
+          processing_status: string
+          source_id: string
+        }[]
+      }
     }
     Enums: {
       app_role: "user" | "admin"
