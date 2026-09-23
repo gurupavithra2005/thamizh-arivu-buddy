@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1790174663199,
+      "tag": "0000_thamizh_arivu_base_schema",
+      "breakpoints": true
+    }
+  ]
 }
