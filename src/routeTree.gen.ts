@@ -10,33 +10,202 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AssistantRouteImport } from './routes/assistant'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ExplorerRouteImport } from './routes/explorer'
+import { Route as HistoryRouteImport } from './routes/history'
+import { Route as LibraryRouteImport } from './routes/library'
+import { Route as ResearcherRouteImport } from './routes/researcher'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as SourcesRouteImport } from './routes/sources'
+import { Route as UploadRouteImport } from './routes/upload'
+import { Route as ExplorerIndexRouteImport } from './routes/explorer.index'
+import { Route as ExplorerCategoryRouteImport } from './routes/explorer.$category'
+import { Route as ApiPublicIngestRouteImport } from './routes/api/public/ingest'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssistantRoute = AssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExplorerRoute = ExplorerRouteImport.update({
+  id: '/explorer',
+  path: '/explorer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryRoute = LibraryRouteImport.update({
+  id: '/library',
+  path: '/library',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearcherRoute = ResearcherRouteImport.update({
+  id: '/researcher',
+  path: '/researcher',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SourcesRoute = SourcesRouteImport.update({
+  id: '/sources',
+  path: '/sources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UploadRoute = UploadRouteImport.update({
+  id: '/upload',
+  path: '/upload',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExplorerIndexRoute = ExplorerIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ExplorerRoute,
+} as any)
+const ExplorerCategoryRoute = ExplorerCategoryRouteImport.update({
+  id: '/$category',
+  path: '/$category',
+  getParentRoute: () => ExplorerRoute,
+} as any)
+const ApiPublicIngestRoute = ApiPublicIngestRouteImport.update({
+  id: '/api/public/ingest',
+  path: '/api/public/ingest',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/assistant': typeof AssistantRoute
+  '/auth': typeof AuthRoute
+  '/explorer': typeof ExplorerRouteWithChildren
+  '/history': typeof HistoryRoute
+  '/library': typeof LibraryRoute
+  '/researcher': typeof ResearcherRoute
+  '/search': typeof SearchRoute
+  '/sources': typeof SourcesRoute
+  '/upload': typeof UploadRoute
+  '/explorer/$category': typeof ExplorerCategoryRoute
+  '/explorer/': typeof ExplorerIndexRoute
+  '/api/public/ingest': typeof ApiPublicIngestRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/assistant': typeof AssistantRoute
+  '/auth': typeof AuthRoute
+  '/history': typeof HistoryRoute
+  '/library': typeof LibraryRoute
+  '/researcher': typeof ResearcherRoute
+  '/search': typeof SearchRoute
+  '/sources': typeof SourcesRoute
+  '/upload': typeof UploadRoute
+  '/explorer/$category': typeof ExplorerCategoryRoute
+  '/explorer': typeof ExplorerIndexRoute
+  '/api/public/ingest': typeof ApiPublicIngestRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/assistant': typeof AssistantRoute
+  '/auth': typeof AuthRoute
+  '/explorer': typeof ExplorerRouteWithChildren
+  '/history': typeof HistoryRoute
+  '/library': typeof LibraryRoute
+  '/researcher': typeof ResearcherRoute
+  '/search': typeof SearchRoute
+  '/sources': typeof SourcesRoute
+  '/upload': typeof UploadRoute
+  '/explorer/$category': typeof ExplorerCategoryRoute
+  '/explorer/': typeof ExplorerIndexRoute
+  '/api/public/ingest': typeof ApiPublicIngestRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/assistant'
+    | '/auth'
+    | '/explorer'
+    | '/history'
+    | '/library'
+    | '/researcher'
+    | '/search'
+    | '/sources'
+    | '/upload'
+    | '/explorer/$category'
+    | '/explorer/'
+    | '/api/public/ingest'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/assistant'
+    | '/auth'
+    | '/history'
+    | '/library'
+    | '/researcher'
+    | '/search'
+    | '/sources'
+    | '/upload'
+    | '/explorer/$category'
+    | '/explorer'
+    | '/api/public/ingest'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/assistant'
+    | '/auth'
+    | '/explorer'
+    | '/history'
+    | '/library'
+    | '/researcher'
+    | '/search'
+    | '/sources'
+    | '/upload'
+    | '/explorer/$category'
+    | '/explorer/'
+    | '/api/public/ingest'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AssistantRoute: typeof AssistantRoute
+  AuthRoute: typeof AuthRoute
+  ExplorerRoute: typeof ExplorerRouteWithChildren
+  HistoryRoute: typeof HistoryRoute
+  LibraryRoute: typeof LibraryRoute
+  ResearcherRoute: typeof ResearcherRoute
+  SearchRoute: typeof SearchRoute
+  SourcesRoute: typeof SourcesRoute
+  UploadRoute: typeof UploadRoute
+  ApiPublicIngestRoute: typeof ApiPublicIngestRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +217,127 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assistant': {
+      id: '/assistant'
+      path: '/assistant'
+      fullPath: '/assistant'
+      preLoaderRoute: typeof AssistantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/explorer': {
+      id: '/explorer'
+      path: '/explorer'
+      fullPath: '/explorer'
+      preLoaderRoute: typeof ExplorerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library': {
+      id: '/library'
+      path: '/library'
+      fullPath: '/library'
+      preLoaderRoute: typeof LibraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/researcher': {
+      id: '/researcher'
+      path: '/researcher'
+      fullPath: '/researcher'
+      preLoaderRoute: typeof ResearcherRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sources': {
+      id: '/sources'
+      path: '/sources'
+      fullPath: '/sources'
+      preLoaderRoute: typeof SourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/upload': {
+      id: '/upload'
+      path: '/upload'
+      fullPath: '/upload'
+      preLoaderRoute: typeof UploadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/explorer/': {
+      id: '/explorer/'
+      path: '/'
+      fullPath: '/explorer/'
+      preLoaderRoute: typeof ExplorerIndexRouteImport
+      parentRoute: typeof ExplorerRoute
+    }
+    '/explorer/$category': {
+      id: '/explorer/$category'
+      path: '/$category'
+      fullPath: '/explorer/$category'
+      preLoaderRoute: typeof ExplorerCategoryRouteImport
+      parentRoute: typeof ExplorerRoute
+    }
+    '/api/public/ingest': {
+      id: '/api/public/ingest'
+      path: '/api/public/ingest'
+      fullPath: '/api/public/ingest'
+      preLoaderRoute: typeof ApiPublicIngestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface ExplorerRouteChildren {
+  ExplorerCategoryRoute: typeof ExplorerCategoryRoute
+  ExplorerIndexRoute: typeof ExplorerIndexRoute
+}
+
+const ExplorerRouteChildren: ExplorerRouteChildren = {
+  ExplorerCategoryRoute: ExplorerCategoryRoute,
+  ExplorerIndexRoute: ExplorerIndexRoute,
+}
+
+const ExplorerRouteWithChildren = ExplorerRoute._addFileChildren(
+  ExplorerRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AssistantRoute: AssistantRoute,
+  AuthRoute: AuthRoute,
+  ExplorerRoute: ExplorerRouteWithChildren,
+  HistoryRoute: HistoryRoute,
+  LibraryRoute: LibraryRoute,
+  ResearcherRoute: ResearcherRoute,
+  SearchRoute: SearchRoute,
+  SourcesRoute: SourcesRoute,
+  UploadRoute: UploadRoute,
+  ApiPublicIngestRoute: ApiPublicIngestRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
