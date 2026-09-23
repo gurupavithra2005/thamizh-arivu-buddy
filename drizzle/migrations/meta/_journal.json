@@ -15,6 +15,13 @@
       "when": 1790174686248,
       "tag": "0001_revoke_function_execute",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790174756618,
+      "tag": "0002_seed_catalogue_and_sources",
+      "breakpoints": true
     }
   ]
 }
