@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { AuthButton } from "@/components/layout/AuthButton";
+import { LanguageToggle } from "@/components/layout/LanguageToggle";
 import { Button } from "@/components/ui/button";
 
 const NAV = [
@@ -38,6 +39,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <LanguageToggle />
           <AuthButton />
           <Button asChild size="sm" className="hidden sm:inline-flex">
             <Link to="/assistant">Start exploring</Link>
