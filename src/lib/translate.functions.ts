@@ -9,7 +9,7 @@ export const translateTexts = createServerFn({ method: "POST" })
     const input = (data ?? {}) as { texts?: unknown; target?: unknown };
     const target = input.target === "ta" ? "ta" : "en";
     const texts = Array.isArray(input.texts)
-      ? input.texts.filter((t): t is string => typeof t === "string").slice(0, 80).map((t) => t.slice(0, 2000))
+      ? input.texts.filter((t): t is string => typeof t === "string").slice(0, 80).map((t) => t.slice(0, 4000))
       : [];
     return { texts, target } as { texts: string[]; target: "ta" | "en" };
   })

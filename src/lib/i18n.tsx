@@ -110,25 +110,28 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       if (pending.size === 0) return;
       setBusy(true);
       const keys = [...pending.keys()];
-      for (let i = 0; i < keys.length && !cancelled; i += 40) {
-        const batch = keys.slice(i, i + 40);
-        try {
-          const { translations } = await translateTexts({ data: { texts: batch, target } });
-          if (cancelled || langRef.current !== target) break;
-          batch.forEach((src, j) => {
-            const tr = translations[j] ?? src;
-            cache.current[`${target}:${src}`] = tr;
-            for (const node of pending.get(src) ?? []) {
-              const original = originals.current.get(node) ?? src;
-              const value = original.replace(src, tr);
-              node.nodeValue = value;
-              applied.current.set(node, value);
-            }
-          });
-        } catch (e) {
-          console.error("[i18n] translate failed", e);
-        }
-      }
+      const batches: string[][] = [];
+      for (let i = 0; i < keys.length; i += 12) batches.push(keys.slice(i, i + 12));
+      await Promise.all(
+        batches.map(async (batch) => {
+          try {
+            const { translations } = await translateTexts({ data: { texts: batch, target } });
+            if (cancelled || langRef.current !== target) return;
+            batch.forEach((src, j) => {
+              const tr = translations[j] ?? src;
+              cache.current[`${target}:${src}`] = tr;
+              for (const node of pending.get(src) ?? []) {
+                const original = originals.current.get(node) ?? src;
+                const value = original.replace(src, tr);
+                node.nodeValue = value;
+                applied.current.set(node, value);
+              }
+            });
+          } catch (e) {
+            console.error("[i18n] translate failed", e);
+          }
+        }),
+      );
       try {
         localStorage.setItem(CACHE_KEY, JSON.stringify(cache.current));
       } catch {
